@@ -28,4 +28,15 @@ public class RickAndMortyService {
         var all = getAll();
         return all.get((int) (Math.random() * all.size()));
     }
+
+    public int getStatistic(String species) {
+        ResponseEntity<RickAndMortyApiResponse> responseEntity = client.get()
+                .uri("/character/?species=" + species + "&status=alive")
+                .retrieve()
+                .toEntity(RickAndMortyApiResponse.class)
+                .block();
+
+        var body = Objects.requireNonNull(responseEntity).getBody();
+        return Objects.requireNonNull(body).info().count();
+    }
 }

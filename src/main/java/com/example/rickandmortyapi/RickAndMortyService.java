@@ -23,4 +23,9 @@ public class RickAndMortyService {
         var body = Objects.requireNonNull(responseEntity).getBody();
         return Objects.requireNonNull(body).results();
     }
+
+    public RickAndMortyCharacter getRandom() {
+        var all = getAll();
+        return all.get((int) (Math.random() * all.size()));
+    }
 }

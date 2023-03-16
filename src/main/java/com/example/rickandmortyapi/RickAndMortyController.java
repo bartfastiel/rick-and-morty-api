@@ -18,4 +18,9 @@ public class RickAndMortyController {
     List<RickAndMortyCharacter> getAll() {
         return service.getAll();
     }
+
+    @GetMapping("/random")
+    RickAndMortyCharacter getRandom() {
+        return service.getRandom();
+    }
 }
